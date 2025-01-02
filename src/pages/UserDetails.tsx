@@ -1,6 +1,7 @@
 import { ChevronLeft, Globe, Mail, NotebookPen, PhoneCall } from "lucide-react";
 import { Link, useParams } from "react-router";
 
+import Spinner from "../components/Spinner";
 import { useEffect } from "react";
 import { useStore } from "../store";
 
@@ -15,7 +16,7 @@ const UserDetails = () => {
   }, [id]);
 
   if(loading) {
-    return <p>Loading...</p>
+    return <Spinner />
   }
 
   return (
