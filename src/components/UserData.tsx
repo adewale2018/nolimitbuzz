@@ -1,8 +1,9 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 
+import { Link } from "react-router";
 import { User } from "../store/userSlice";
 
-const UserData = ({ name, email, phone, address }: User) => {
+const UserData = ({ id, name, email, phone, address }: User) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-[1.02]">
       <img
@@ -29,12 +30,15 @@ const UserData = ({ name, email, phone, address }: User) => {
           </div>
         </div>
 
-        <button
-          onClick={() => {}}
-          className="w-full bg-sky-600 text-white py-2 rounded-md hover:bg-sky-700 transition-colors"
+        <Link
+          to={`/user/${id}`}
+          className="w-full block text-center bg-sky-600 text-white py-2 rounded-md hover:bg-sky-700 transition-colors"
         >
+          <div className='flex items-center justify-center gap-2'>
           View Details
-        </button>
+          <ExternalLink size={18} />
+          </div>
+        </Link>
       </div>
     </div>
   );

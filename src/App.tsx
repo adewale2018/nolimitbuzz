@@ -7,7 +7,7 @@ import UserDetails from "./pages/UserDetails";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <section  className="min-h-screen bg-gray-50">
         <Navbar />
         <main className="container mx-auto px-4 py-8">
           <Routes>
@@ -15,7 +15,7 @@ function App() {
             <Route path="/user/:id" element={<UserDetails />} />
           </Routes>
         </main>
-      </div>
+      </section>
     </Router>
   );
 }
