@@ -4,7 +4,7 @@ import axios from "axios";
 const BASE_URL = "https://jsonplaceholder.typicode.com/users";
 
 export interface User {
-  id: number;
+  id: string | undefined;
   name: string;
   username: string;
   email: string;
