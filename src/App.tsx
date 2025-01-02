@@ -1,11 +1,17 @@
+import { Route, BrowserRouter as Router, Routes } from "react-router";
 
+import Homepage from "./pages/Homepage";
+import UserDetails from "./pages/UserDetails";
 
 function App() {
-  
-
   return (
-   <h1 className="font-bold text-5xl text-center text-sky-500">Welcome</h1>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/user/:id" element={<UserDetails />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
