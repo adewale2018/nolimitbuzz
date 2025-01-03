@@ -1,50 +1,21 @@
-# React + TypeScript + Vite
+# NOLIMITBUZZ TECHNICAL CHALLENGE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## This project is built with the following tools and technologies:
+- **`React`, `TypeScript`, `Zustand`, `TailwindCSS`, `React-router`, `Lucide-react-icons`**
 
-Currently, two official plugins are available:
+## To set up the project, follow the these instructions;
+- First, ensure you have Node.js installed on your machine. To install Node.js, Check [**here**](https://nodejs.org/en)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Clone the project repository by running this command on your terminal *`git clone https://github.com/adewale2018/nolimitbuzz.git`* 
 
-## Expanding the ESLint configuration
+- Change to the project directory by running this command on your terminal *`cd nolimitbuzz`*
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Open the project in your favorite code editor e.g [**VSCode**](https://code.visualstudio.com/download).
 
-- Configure the top-level `parserOptions` property like this:
+- Open the terminal in your code editor and run the command *`npm install`* to install the project dependencies.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- After installing the dependencies, run the command *`npm run dev`* to get the project started.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- You should see something like this **Local:   http://localhost:5173/**. You can `Cmd + click` on the **http://localhost:5173/** to open it in the browser or (Ctr + Click for windows users).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- You may want to visit the project deployed on Netlify [**here**](https://nolimibuzz.netlify.app)
