@@ -31,22 +31,25 @@ export interface UserSlice {
   loading: boolean;
   error: string | null;
   users: User[];
+  fetchedUsers: User[];
   userDetails: User | null;
   getUsers: () => void;
   getDetails: (userId: string) => void;
+  searchUsers: (searchTerm: string) => void;
 }
 
 export const userSlice: StateCreator<UserSlice> = (set) => ({
   loading: false,
   error: null,
   users: [],
+  fetchedUsers: [],
   userDetails: null,
   getUsers: async () => {
     set({ loading: true });
     try {
       const response = await axios.get(BASE_URL);
       if (response && response.status === 200) {
-        set({ users: response.data });
+        set({ users: response.data, fetchedUsers: response.data });
         set({ loading: false });
       }
     } catch (error: any) {
@@ -68,5 +71,18 @@ export const userSlice: StateCreator<UserSlice> = (set) => ({
     } finally {
       set({ loading: false });
     }
+  },
+  searchUsers: (searchTerm) => {
+    set((state) => {
+      if (!searchTerm || searchTerm.trim().length === 0) {
+        return { users: state.fetchedUsers };
+      }
+      const filteredUsers = state.fetchedUsers.filter(
+        (user) =>
+          user.name.toLowerCase().includes(searchTerm.trim().toLowerCase()) ||
+          user.email.toLowerCase().includes(searchTerm.trim().toLowerCase())
+      );
+      return { users: filteredUsers };
+    });
   },
 });
