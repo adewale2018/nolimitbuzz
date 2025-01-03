@@ -31,26 +31,43 @@ export interface UserSlice {
   loading: boolean;
   error: string | null;
   users: User[];
-  fetchedUsers: User[];
+  fetchedUsers: User[]; 
   userDetails: User | null;
+  currentPage: number; 
+  pageSize: number; 
+  totalUsers: number; 
   getUsers: () => void;
   getDetails: (userId: string) => void;
   searchUsers: (searchTerm: string) => void;
+  setPage: (page: number) => void;
 }
 
-export const userSlice: StateCreator<UserSlice> = (set) => ({
+export const userSlice: StateCreator<UserSlice> = (set, get) => ({
   loading: false,
   error: null,
   users: [],
   fetchedUsers: [],
   userDetails: null,
+  currentPage: 1,
+  pageSize: 3,
+  totalUsers: 0,
   getUsers: async () => {
     set({ loading: true });
     try {
       const response = await axios.get(BASE_URL);
       if (response && response.status === 200) {
-        set({ users: response.data, fetchedUsers: response.data });
-        set({ loading: false });
+        const data = response?.data;
+        set({
+          fetchedUsers: data,
+          totalUsers: data?.length,
+        });
+        // Set paginated users
+        const { currentPage, pageSize } = get();
+        const paginatedUsers = data.slice(
+          (currentPage - 1) * pageSize,
+          currentPage * pageSize
+        );
+        set({ users: paginatedUsers });
       }
     } catch (error: any) {
       set({ error: error.message });
@@ -64,7 +81,6 @@ export const userSlice: StateCreator<UserSlice> = (set) => ({
       const response = await axios.get(`${BASE_URL}/${userId}`);
       if (response && response.status === 200) {
         set({ userDetails: response.data });
-        set({ loading: false });
       }
     } catch (error: any) {
       set({ error: error.message });
@@ -74,15 +90,37 @@ export const userSlice: StateCreator<UserSlice> = (set) => ({
   },
   searchUsers: (searchTerm) => {
     set((state) => {
+      const { fetchedUsers, currentPage, pageSize } = state;
       if (!searchTerm || searchTerm.trim().length === 0) {
-        return { users: state.fetchedUsers };
+        const paginatedUsers = fetchedUsers.slice(
+          (currentPage - 1) * pageSize,
+          currentPage * pageSize
+        );
+        return { users: paginatedUsers };
       }
-      const filteredUsers = state.fetchedUsers.filter(
+      const filteredUsers = fetchedUsers.filter(
         (user) =>
           user.name.toLowerCase().includes(searchTerm.trim().toLowerCase()) ||
           user.email.toLowerCase().includes(searchTerm.trim().toLowerCase())
       );
-      return { users: filteredUsers };
+      const paginatedFilteredUsers = filteredUsers.slice(
+        (currentPage - 1) * pageSize,
+        currentPage * pageSize
+      );
+      return {
+        users: paginatedFilteredUsers,
+        totalUsers: filteredUsers.length,
+      };
+    });
+  },
+  setPage: (page) => {
+    set((state) => {
+      const { fetchedUsers, pageSize } = state;
+      const paginatedUsers = fetchedUsers.slice(
+        (page - 1) * pageSize,
+        page * pageSize
+      );
+      return { users: paginatedUsers, currentPage: page };
     });
   },
 });
