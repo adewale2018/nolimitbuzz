@@ -1,4 +1,4 @@
-import { ChevronLeft, Globe, Mail, NotebookPen, PhoneCall } from "lucide-react";
+import { ChevronLeft, Globe, Mail, NotebookPen, PhoneCall, User } from "lucide-react";
 import { Link, useParams } from "react-router";
 
 import Spinner from "../components/Spinner";
@@ -22,10 +22,10 @@ const UserDetails = () => {
   return (
     <section>
       <Link to="/" className="font-serif flex items-center mb-5 text-sky-500">
-        <ChevronLeft className="h-8 w-8 cursor-pointer text-sky-700" /> Back
+        <ChevronLeft className="h-8 w-8 cursor-pointer text-sky-600" /> Back
       </Link>
       <div className="shadow-md p-8 border rounded bg-gray-100 mb-10">
-        <h2 className="font-serif text-sky-500 text-xl md:text-3xl font-bold">
+        <h2 className="font-serif text-sky-600 text-xl md:text-3xl font-bold">
           User Details
         </h2>
         <p className="px-2 mt-5 text-xl font-serif">
@@ -38,94 +38,90 @@ const UserDetails = () => {
       <div className="cursor-pointer rounded-lg shadow-xl border border-gray-200 px-3 md:px-10 py-5">
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">Name</h4>
-          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-medium">
+          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-black hover:text-sky-700 transition-all duration-100 font-light">
             {userDetails?.name}
-            <NotebookPen className="w-4 h-4" />
+            <NotebookPen className="w-4 h-4 text-sky-700" strokeWidth={3} />
           </span>
         </div>
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">Email</h4>
-          <span className="flex lowercase items-center gap-2  bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-medium">
+          <span className="flex lowercase items-center gap-2  bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-black hover:text-sky-700 transition-all duration-100 font-light">
             {userDetails?.email}
-            <Mail className="w-4 h-4" />
+            <Mail className="w-4 h-4 text-sky-700" strokeWidth={3} />
           </span>
         </div>
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">Username</h4>
-          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-medium">
+          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-black hover:text-sky-700 transition-all duration-100 font-light">
             {userDetails?.username}
-            <Mail className="w-4 h-4" />
+            <User className="w-4 h-4 text-sky-700" strokeWidth={3} />
           </span>
         </div>
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">Phone Contact</h4>
-          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-medium">
+          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-black hover:text-sky-700 transition-all duration-100 font-light">
             {userDetails?.phone}
-            <PhoneCall className="w-4 h-4" />
+            <PhoneCall className="w-4 h-4 text-sky-700" strokeWidth={3} />
           </span>
         </div>
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">Website</h4>
-          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-medium">
+          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-black hover:text-sky-700 transition-all duration-100 font-normal">
             {userDetails?.website}
-            <Globe className="w-4 h-4" />
+            <Globe className="w-4 h-4 text-sky-700" strokeWidth={3} />
           </span>
         </div>
       </div>
       {/* Company */}
-      <h4 className="mt-10 mb-2 text-sky-600 text-2xl font-medium">Company:</h4>
+      <h4 className="mt-10 uppercase font-serif mb-2 text-sky-600 text-2xl font-medium">Company:</h4>
       <div className="cursor-pointer rounded-lg shadow-xl border border-gray-200 px-3 md:px-10 py-5">
         <div className="border-b py-4 flex justify-between items-center flex-wrap">
           <div>
-            <p className="text-sky-400 font-bold uppercase">Name</p>
+            <p className="text-sky-600 font-thin uppercase">Name</p>
             <p>{userDetails?.company?.name}</p>
           </div>
           <div className="my-5">
-            <p className="text-sky-400 font-bold uppercase">catchPhrase</p>
+            <p className="text-sky-600 font-thin uppercase">catchPhrase</p>
             <p>{userDetails?.company?.catchPhrase}</p>
           </div>
           <div>
-            <p className="text-sky-400 font-bold uppercase">BS</p>
+            <p className="text-sky-600 font-thin uppercase">BS</p>
             <p>{userDetails?.company?.bs}</p>
           </div>
         </div>
       </div>
       {/* Address */}
 
-      <h4 className="mt-10 mb-2 text-sky-600 text-2xl font-medium">Address:</h4>
+      <h4 className="mt-10 mb-2 font-serif uppercase text-sky-600 text-2xl font-medium">Address:</h4>
       <div className="cursor-pointer rounded-lg shadow-xl border border-gray-200 px-3 md:px-10 py-5">
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">Street</h4>
-          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-medium">
+          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-light">
             {userDetails?.address?.street}
-            <NotebookPen className="w-4 h-4" />
           </span>
         </div>
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">Suite</h4>
-          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-medium">
+          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-light">
             {userDetails?.address?.suite}
-            <Mail className="w-4 h-4" />
           </span>
         </div>
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">City</h4>
-          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-medium">
+          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-light">
             {userDetails?.address?.city}
-            <Mail className="w-4 h-4" />
           </span>
         </div>
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">ZipCode</h4>
-          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-medium">
+          <span className="flex items-center gap-2 capitalize bg-gray-100 hover:bg-gray-200 rounded-full px-5 md:px-10 py-1 md:py-2  text-sky-600 hover:text-sky-700 transition-all duration-100 font-light">
             {userDetails?.address?.zipcode}
-            <PhoneCall className="w-4 h-4" />
           </span>
         </div>
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">Geo</h4>
-          <p>Latitude: {userDetails?.address?.geo?.lat}</p>
-          <p>Longitude: {userDetails?.address?.geo?.lng}</p>
+          <p>Lat: <span className="bg-sky-200 text-black px-4 py-1 rounded-full">{userDetails?.address?.geo?.lat}</span></p>
+          <p>Lng: <span className="bg-sky-200 text-black px-4 py-1 rounded-full">{userDetails?.address?.geo?.lng}</span></p>
         </div>
       </div>
     </section>
