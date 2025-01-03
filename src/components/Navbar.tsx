@@ -11,7 +11,11 @@ export default function Navbar() {
           alt="nolimitbuzz icon"
         />
       </Link>
-      <a href="https://github.com/adewale2018/nolimitbuzz" target="_blank" className="cursor-pointer text-sky-600 hover:text-sky-700">
+      <a
+        href="https://github.com/adewale2018/nolimitbuzz"
+        target="_blank"
+        className="cursor-pointer text-sky-600 hover:text-sky-700"
+      >
         Source code
       </a>
     </nav>

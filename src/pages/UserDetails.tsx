@@ -15,16 +15,13 @@ const UserDetails = () => {
     }
   }, [id]);
 
-  if(loading) {
-    return <Spinner />
+  if (loading) {
+    return <Spinner />;
   }
 
   return (
     <section>
-      <Link
-        to="/"
-        className="font-serif flex items-center mb-5 text-sky-500"
-      >
+      <Link to="/" className="font-serif flex items-center mb-5 text-sky-500">
         <ChevronLeft className="h-8 w-8 cursor-pointer text-sky-700" /> Back
       </Link>
       <div className="shadow-md p-8 border rounded bg-gray-100 mb-10">
@@ -94,7 +91,7 @@ const UserDetails = () => {
         </div>
       </div>
       {/* Address */}
-      
+
       <h4 className="mt-10 mb-2 text-sky-600 text-2xl font-medium">Address:</h4>
       <div className="cursor-pointer rounded-lg shadow-xl border border-gray-200 px-3 md:px-10 py-5">
         <div className="border-b py-4 flex justify-between items-center">
@@ -127,11 +124,10 @@ const UserDetails = () => {
         </div>
         <div className="border-b py-4 flex justify-between items-center">
           <h4 className="font-serif text-base md:text-xl">Geo</h4>
-          <p>Lat: {userDetails?.address?.geo?.lat}</p>
-          <p>Lng: {userDetails?.address?.geo?.lng}</p>
+          <p>Latitude: {userDetails?.address?.geo?.lat}</p>
+          <p>Longitude: {userDetails?.address?.geo?.lng}</p>
         </div>
       </div>
-
     </section>
   );
 };
